@@ -53,10 +53,15 @@ def get_balance(ganache_url, address):
     return balance_ether
 
 '''
+To use it from Python shell just: 
+
+from functions import send_ether, get_balance
 ganache_url = 'http://localhost:8545'
 private_key = 'your_private_key_here'
 to_address = 'destination_address_here'
-amount = 1  # Send 1 Ether
+from web3 import Web3
+to_address=Web3.to_checksum_address(to_address)
+amount = 1
 
 tx_hash = send_ether(ganache_url, private_key, to_address, amount)
 print(f'Transaction successfully sent! Transaction hash: {tx_hash}')
